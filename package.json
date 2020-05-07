@@ -1,0 +1,16 @@
+{
+  "name": "JS-game",
+  "homepage": "https://ivanjulian.github.io/",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ivanjulian/JS-Game.git",
+  "author": "IvanKhizhnyak <vanja.khizhnjak99@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "gh-pages": "^2.2.0"
+  },
+  "scripts": {
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -b master -d build"
+  }
+}
