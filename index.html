@@ -9,7 +9,7 @@
   <title>Breakout!</title>
 </head>
 
-<body>
+<body unselectable="on" onselectstart="return false;">
   <h1 id="title" class="noselect">Breakout!</h1>
   <button id="rules-btn" class="btn rules-btn noselect">?</button>
   <div id="rules" class="rules">
@@ -26,7 +26,7 @@
 
   </div>
 
-  <canvas id="canvas" class="noselect" width="800" height="600"></canvas>
+  <canvas  id="canvas" class="noselect" width="800" height="600"></canvas>
   <div id="btn-grup" class="btn-grup">
     <button unselectable="on" onselectstart="return false;" id="leftBtn" class="btn noselect" ontouchend="btnUp()"
       ontouchstart="btnDown('left')">←</button>
