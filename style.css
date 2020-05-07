@@ -17,12 +17,19 @@ h1 {
   color: #fff;
 }
 
+h2 {
+  margin-top: 5px;
+  text-align: center;
+}
+
 canvas {
   background: #f0f0f0;
   display: block;
   border-radius: 5px;
   width: 90%;
   max-width: 800px;
+  z-index: -1;
+
 }
 
 .btn {
@@ -41,9 +48,8 @@ canvas {
   outline: 0;
 }
 
-
 .btn:active {
-  transform: scale(0.90);
+  transform: scale(0.9);
 }
 
 .rules-btn {
@@ -51,13 +57,16 @@ canvas {
   top: 30px;
   left: 30px;
 }
+.close-btn{
+  z-index: 10;
+}
 
 .rules {
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(255, 255, 255, 0.24);
-  
+  background: rgba(255, 255, 255, 0.527);
+
   color: #fff;
   min-height: 100vh;
   width: 400px;
@@ -66,7 +75,17 @@ canvas {
   transform: translateX(-400px);
   transition: transform 1s ease-in-out;
 }
+.rules-info{
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
 
 .rules.show {
   transform: translateX(0);
+}
+
+.blur {
+  filter: blur(10px);
 }

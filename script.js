@@ -3,7 +3,9 @@ const closeBtn = document.getElementById('close-btn');
 const rules = document.getElementById('rules');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-
+const title = document.getElementById('title');
+const infoButton = document.getElementById('rules-btn');
+const okButton = document.getElementById('close-btn');
 let score = 0;
 
 const brickRowCount = 9; //space for bicks in row
@@ -12,15 +14,16 @@ const brickColumnCount = 4; //space for bicks in column
 
 //Random Color for each start
 const randHexColor = () => {
-  let color = '#' + Math.floor(Math.random()*16777215).toString(16);
+  let color = '#' + Math.floor(Math.random() * 16777215).toString(16);
   color == '#ffffff' ? randHexColor() : color;
   return color;
 }
 
 const mainColor = randHexColor();
-
+infoButton.style.color = mainColor;
+okButton.style.color = mainColor;
+rules.style.color = mainColor;
 document.body.style.backgroundColor = mainColor;
-document.getElementById('rules').style.filter = 'hue-rotate(90deg)';
 console.log(mainColor);
 
 // Create ball props
@@ -85,7 +88,7 @@ const drawPaddle = () => {
 // Draw score oon canvas
 const drawScore = () => {
   ctx.font = '20px Arial';
-  ctx.fillText(`Score: ${score}`, canvas.width - 100, 30); //Draws "filled" text on the canvas
+  ctx.fillText(`Score: ${score}`, canvas.width/2 - 30, 30); //Draws "filled" text on the canvas
 }
 
 // Draw bricks on canvas
@@ -250,11 +253,14 @@ document.addEventListener('keyup', keyUp);
 
 // Rules and close event handlers
 rulesBtn.addEventListener('click', () => {
+  title.classList.add('blur');
+  canvas.classList.add('blur');
+  infoButton.classList.add('blur');
   rules.classList.add('show');
-  moveBall();
 });
 closeBtn.addEventListener('click', () => {
+  title.classList.remove('blur');
+  canvas.classList.remove('blur');
+  infoButton.classList.remove('blur');
   rules.classList.remove('show');
-  document.getElementById('canvas').style.filter = 'blur(10px)'
-  moveBall();
 });
