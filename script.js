@@ -9,6 +9,20 @@ let score = 0;
 const brickRowCount = 9; //space for bicks in row
 const brickColumnCount = 4; //space for bicks in column
 
+
+//Random Color for each start
+const randHexColor = () => {
+  let color = '#' + Math.floor(Math.random()*16777215).toString(16);
+  color == '#ffffff' ? randHexColor() : color;
+  return color;
+}
+
+const mainColor = randHexColor();
+
+document.body.style.backgroundColor = mainColor;
+document.getElementById('rules').style.filter = 'hue-rotate(90deg)';
+console.log(mainColor);
+
 // Create ball props
 const ball = { //TRY EACH
   x: canvas.width / 2, //position x
@@ -51,36 +65,36 @@ for (let i = 0; i < brickRowCount; i++) {
 }
 
 // Draw ball on canvas
-function drawBall() {
+const drawBall = () => {
   ctx.beginPath(); //Begins a path, or resets the current path
   ctx.arc(ball.x, ball.y, ball.size, 0, Math.PI * 2); //Creates an arc/curve (used to create circles, or parts of circles)
-  ctx.fillStyle = '#0095dd'; //Sets or returns the color, gradient, or pattern used to fill the drawing
+  ctx.fillStyle = mainColor; //Sets or returns the color, gradient, or pattern used to fill the drawing
   ctx.fill(); //Fills the current drawing (path)
   ctx.closePath(); //Creates a path from the current point back to the starting point
 }
 
 // Draw paddle on canvas
-function drawPaddle() {
+const drawPaddle = () => {
   ctx.beginPath();
   ctx.rect(paddle.x, paddle.y, paddle.w, paddle.h); //Creates a rectangle
-  ctx.fillStyle = '#0095dd';
+  ctx.fillStyle = mainColor;
   ctx.fill();
   ctx.closePath();
 }
 
 // Draw score oon canvas
-function drawScore() {
+const drawScore = () => {
   ctx.font = '20px Arial';
   ctx.fillText(`Score: ${score}`, canvas.width - 100, 30); //Draws "filled" text on the canvas
 }
 
 // Draw bricks on canvas
-function drawBricks() {
+const drawBricks = () => {
   bricks.forEach(column => {
     column.forEach(brick => {
       ctx.beginPath();
       ctx.rect(brick.x, brick.y, brick.w, brick.h);
-      ctx.fillStyle = brick.visible ? '#0095dd' : 'transparent';
+      ctx.fillStyle = brick.visible ? mainColor : 'transparent';
       ctx.fill();
       ctx.closePath();
     });
@@ -88,7 +102,7 @@ function drawBricks() {
 }
 
 // Move paddle on canvas
-function movePaddle() {
+const movePaddle = () => {
   paddle.x += paddle.dx;
 
   // Wall detection
@@ -102,7 +116,19 @@ function movePaddle() {
 }
 
 // Move ball on canvas
-function moveBall() {
+const moveBall = (play) => {
+  // if (play == true) {
+
+  //   ball.x += ball.dx;
+  //   ball.y += ball.dy;
+  //   console.log(ball.dx);
+  //   console.log(ball.dy);
+  // } else {
+  //  ball.dx = 0;
+  //  ball.dy = 0;
+  //  console.log(ball.dx);
+  //  console.log(ball.dy);
+  // }
   ball.x += ball.dx;
   ball.y += ball.dy;
 
@@ -146,15 +172,15 @@ function moveBall() {
     });
   });
 
-    // Hit bottom wall - Lose
-    if (ball.y + ball.size > canvas.height) {
-      showAllBricks();
-      score = 0;
-    }
+  // Hit bottom wall - Lose
+  if (ball.y + ball.size > canvas.height) {
+    showAllBricks();
+    score = 0;
   }
+}
 
 // Increase score
-function increaseScore() {
+const increaseScore = () => {
   score++;
 
   if (score % (brickRowCount * brickRowCount) === 0) {
@@ -163,14 +189,14 @@ function increaseScore() {
 }
 
 // Make all bricks appear
-function showAllBricks() {
+const showAllBricks = () => {
   bricks.forEach(column => {
     column.forEach(brick => (brick.visible = true));
   });
 }
 
 // Draw everything
-function draw() {
+const draw = () => {
   // clear canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -181,9 +207,9 @@ function draw() {
 }
 
 // Update canvas drawing and animation
-function update() {
-   movePaddle();
-   moveBall();
+const update = () => {
+  movePaddle();
+  moveBall(true);
 
   // Draw everything
   draw();
@@ -196,8 +222,9 @@ function update() {
 update();
 
 
+
 // Keydown event
-function keyDown(e) {
+const keyDown = (e) => {
   if (e.key === 'Right' || e.key === 'ArrowRight') {
     paddle.dx = paddle.speed;
   } else if (e.key === 'Left' || e.key === 'ArrowLeft') {
@@ -206,7 +233,7 @@ function keyDown(e) {
 }
 
 // Keyup event
-function keyUp(e) {
+const keyUp = (e) => {
   if (
     e.key === 'Right' ||
     e.key === 'ArrowRight' ||
@@ -222,5 +249,12 @@ document.addEventListener('keydown', keyDown);
 document.addEventListener('keyup', keyUp);
 
 // Rules and close event handlers
-rulesBtn.addEventListener('click', () => rules.classList.add('show'));
-closeBtn.addEventListener('click', () => rules.classList.remove('show'));
+rulesBtn.addEventListener('click', () => {
+  rules.classList.add('show');
+  moveBall();
+});
+closeBtn.addEventListener('click', () => {
+  rules.classList.remove('show');
+  document.getElementById('canvas').style.filter = 'blur(10px)'
+  moveBall();
+});
