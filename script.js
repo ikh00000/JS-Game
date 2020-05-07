@@ -30,6 +30,7 @@ const mainColor = randHexColor();
 infoButton.style.color = mainColor;
 okButton.style.color = mainColor;
 rules.style.color = mainColor;
+win.style.color = mainColor;
 btnGrup.style.color = mainColor;//??
 
 document.body.style.backgroundColor = mainColor;
@@ -209,7 +210,7 @@ const draw = () => {
 
 //If user have piked all bars
 const lookForWin = () => {
-  if(score == 36){
+  if(score == 5){
     console.log('win');
     win.classList.add('show');
     scoreId.innerHTML = "Score: " + score;
