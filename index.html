@@ -15,25 +15,37 @@
     <h2>You WIN !!!</h2>
     <p id="scoreId"></p>
     <button id="close-btn" class="btn noselect close-btn">OK</button>
-  </div>  
+  </div>
 
   <h1 id="title" class="noselect">Breakout!</h1>
   <button id="rules-btn" class="btn rules-btn noselect">?</button>
   <div id="rules" class="rules">
     <div class="rules-info">
       <h2>Created by Ivan Khizhnyak</h2>
+    </div>
+
+    <div class="rules-info">
       <h3>How To Play:</h3>
       <p>
         Use your right and left keys to move the paddle to bounce the ball up
         and break the blocks.
+        For phones: sensor to controll the paddle
       </p>
       <p>If you miss the ball, your score and the blocks will reset.</p>
+    </div>
+
+    <div class="rules-info">
+      <label for="">
+      Screen buttons:
+      <input id="scrnBtnsCheck" class="checkbox" type="checkbox" checked>
+      </label>
+      
     </div>
     <button id="close-btn" class="btn noselect close-btn">OK</button>
 
   </div>
-  
-  <canvas  id="canvas" class="noselect" width="800" height="600"></canvas>
+
+  <canvas id="canvas" class="noselect" width="800" height="600"></canvas>
   <div id="btn-grup" class="btn-grup">
     <button unselectable="on" onselectstart="return false;" id="leftBtn" class="btn noselect" ontouchend="btnUp()"
       ontouchstart="btnDown('left')">←</button>

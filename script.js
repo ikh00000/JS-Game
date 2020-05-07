@@ -1,17 +1,18 @@
 const rulesBtn = document.getElementById('rules-btn');
-const closeBtn = document.getElementsByClassName('close-btn');
+const closeBtn = document.getElementsByClassName('close-btn'); // change
 const rules = document.getElementById('rules');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 const title = document.getElementById('title');
 const infoButton = document.getElementById('rules-btn');
-const okButton = document.getElementById('close-btn');
+const okButton = document.getElementById('close-btn'); // change
 const btnGrup = document.getElementById('btn-grup');
 const leftBtn = document.getElementById('leftBtn');
 const rightBtn = document.getElementById('rightBtn');
 const win = document.getElementById('win');
 const scoreId = document.getElementById('scoreId');
+const scrnBtnsCheck = document.getElementById('scrnBtnsCheck');
 let score = 0;
 
 const brickRowCount = 9; //space for bicks in row
@@ -28,10 +29,12 @@ const randHexColor = () => {
 const mainColor = randHexColor();
 
 infoButton.style.color = mainColor;
-okButton.style.color = mainColor;
+for(let i = 0; i < closeBtn.length; i++){
+  closeBtn[i].style.color = mainColor;
+}
 rules.style.color = mainColor;
 win.style.color = mainColor;
-btnGrup.style.color = mainColor;//??
+btnGrup.style.color = mainColor;
 
 document.body.style.backgroundColor = mainColor;
 
@@ -222,6 +225,8 @@ const lookForWin = () => {
   }
 }
 
+
+
 // Update canvas drawing and animation
 const update = () => {
   movePaddle();
@@ -293,7 +298,6 @@ rulesBtn.addEventListener('click', () => {
 });
 for(let i = 0; i < closeBtn.length; i++){
   closeBtn[i].addEventListener('click', () => {
-    console.log('win');
     title.classList.remove('blur');
     canvas.classList.remove('blur');
     infoButton.classList.remove('blur');
@@ -303,6 +307,16 @@ for(let i = 0; i < closeBtn.length; i++){
   });
 }
 
+
+
+scrnBtnsCheck.addEventListener('change', (e) =>{
+  console.log(e.target.checked);
+  if(e.target.checked == false){
+    btnGrup.classList.add('display-none');
+  } else {
+    btnGrup.classList.remove('display-none');
+  }
+})
 
 document.addEventListener('touchmove', (e)=>{
   let touch = e.touches[0];

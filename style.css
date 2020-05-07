@@ -31,7 +31,11 @@ canvas {
   z-index: -1;
 
 }
-
+.checkbox{
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+}
 .btn {
   cursor: pointer;
   border: 0;
@@ -73,7 +77,7 @@ canvas {
   max-width: 500px;
   padding: 20px;
   line-height: 1.5;
-  transform: translateX(-100%);
+  transform: translateX(-110%);
   transition: transform 1s ease-in-out;
 }
 .rules-info{
@@ -89,7 +93,7 @@ canvas {
 
 .win{
   position: absolute;
-  top: 50%;
+  top: 50%-100px;
   left: 50%-200px;
   width: 45%;
   padding: 20px;
@@ -115,9 +119,14 @@ canvas {
 }
 
 .btn-grup{
+  display: flex;
+  margin-top: 30px;
+  width: 30%;
+  justify-content: space-between;
+}
+.display-none{
   display: none;
 }
-
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -127,11 +136,11 @@ canvas {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
-@media all and (max-width: 1000px){
+/* @media all and (max-width: 1000px){
   .btn-grup{
     display: flex;
     margin-top: 30px;
     width: 30%;
     justify-content: space-between;
   }
-}
+} */
