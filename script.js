@@ -3,9 +3,14 @@ const closeBtn = document.getElementById('close-btn');
 const rules = document.getElementById('rules');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+
 const title = document.getElementById('title');
 const infoButton = document.getElementById('rules-btn');
 const okButton = document.getElementById('close-btn');
+const btnGrup = document.getElementById('btn-grup');
+const leftBtn = document.getElementById('leftBtn');
+const rightBtn = document.getElementById('rightBtn');
+
 let score = 0;
 
 const brickRowCount = 9; //space for bicks in row
@@ -20,10 +25,14 @@ const randHexColor = () => {
 }
 
 const mainColor = randHexColor();
+
 infoButton.style.color = mainColor;
 okButton.style.color = mainColor;
 rules.style.color = mainColor;
+btnGrup.style.color = mainColor;//??
+
 document.body.style.backgroundColor = mainColor;
+
 console.log(mainColor);
 
 // Create ball props
@@ -88,7 +97,7 @@ const drawPaddle = () => {
 // Draw score oon canvas
 const drawScore = () => {
   ctx.font = '20px Arial';
-  ctx.fillText(`Score: ${score}`, canvas.width/2 - 30, 30); //Draws "filled" text on the canvas
+  ctx.fillText(`Score: ${score}`, canvas.width / 2 - 30, 30); //Draws "filled" text on the canvas
 }
 
 // Draw bricks on canvas
@@ -120,18 +129,6 @@ const movePaddle = () => {
 
 // Move ball on canvas
 const moveBall = (play) => {
-  // if (play == true) {
-
-  //   ball.x += ball.dx;
-  //   ball.y += ball.dy;
-  //   console.log(ball.dx);
-  //   console.log(ball.dy);
-  // } else {
-  //  ball.dx = 0;
-  //  ball.dy = 0;
-  //  console.log(ball.dx);
-  //  console.log(ball.dy);
-  // }
   ball.x += ball.dx;
   ball.y += ball.dy;
 
@@ -230,7 +227,7 @@ update();
 const keyDown = (e) => {
   if (e.key === 'Right' || e.key === 'ArrowRight') {
     paddle.dx = paddle.speed;
-  } else if (e.key === 'Left' || e.key === 'ArrowLeft') {
+  } else if (e.key === 'Left' || e.key === 'ArrowLeft' || e.name == "Left") {
     paddle.dx = -paddle.speed;
   }
 }
@@ -247,9 +244,23 @@ const keyUp = (e) => {
   }
 }
 
+const btnDown = (arrow) => {
+  if (arrow == 'left') {
+    paddle.dx = -paddle.speed;
+  } else {
+    paddle.dx = paddle.speed;
+  }
+}
+
+const btnUp = () => {
+  paddle.dx = 0;
+}
+
 // Keyboard event handlers
 document.addEventListener('keydown', keyDown);
 document.addEventListener('keyup', keyUp);
+document.addEventListener("click", keyDown);
+document.addEventListener("click", keyDown);
 
 // Rules and close event handlers
 rulesBtn.addEventListener('click', () => {

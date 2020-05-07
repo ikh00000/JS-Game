@@ -69,10 +69,11 @@ canvas {
 
   color: #fff;
   min-height: 100vh;
-  width: 400px;
+  width: 90%;
+  max-width: 500px;
   padding: 20px;
   line-height: 1.5;
-  transform: translateX(-400px);
+  transform: translateX(-100%);
   transition: transform 1s ease-in-out;
 }
 .rules-info{
@@ -88,4 +89,17 @@ canvas {
 
 .blur {
   filter: blur(10px);
+}
+
+.btn-grup{
+  display: none;
+}
+
+@media all and (max-width: 1000px){
+  .btn-grup{
+    display: flex;
+    margin-top: 30px;
+    width: 30%;
+    justify-content: space-between;
+  }
 }
