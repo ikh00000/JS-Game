@@ -10,6 +10,13 @@
 </head>
 
 <body unselectable="on" onselectstart="return false;">
+
+  <div id="win" class="win">
+    <h2>You WIN !!!</h2>
+    <p id="scoreId"></p>
+    <button id="close-btn" class="btn noselect close-btn">OK</button>
+  </div>  
+
   <h1 id="title" class="noselect">Breakout!</h1>
   <button id="rules-btn" class="btn rules-btn noselect">?</button>
   <div id="rules" class="rules">
@@ -22,10 +29,10 @@
       </p>
       <p>If you miss the ball, your score and the blocks will reset.</p>
     </div>
-    <button id="close-btn" class="btn noselect">OK</button>
+    <button id="close-btn" class="btn noselect close-btn">OK</button>
 
   </div>
-
+  
   <canvas  id="canvas" class="noselect" width="800" height="600"></canvas>
   <div id="btn-grup" class="btn-grup">
     <button unselectable="on" onselectstart="return false;" id="leftBtn" class="btn noselect" ontouchend="btnUp()"

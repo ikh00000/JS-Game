@@ -1,5 +1,5 @@
 const rulesBtn = document.getElementById('rules-btn');
-const closeBtn = document.getElementById('close-btn');
+const closeBtn = document.getElementsByClassName('close-btn');
 const rules = document.getElementById('rules');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -10,7 +10,8 @@ const okButton = document.getElementById('close-btn');
 const btnGrup = document.getElementById('btn-grup');
 const leftBtn = document.getElementById('leftBtn');
 const rightBtn = document.getElementById('rightBtn');
-
+const win = document.getElementById('win');
+const scoreId = document.getElementById('scoreId');
 let score = 0;
 
 const brickRowCount = 9; //space for bicks in row
@@ -206,6 +207,20 @@ const draw = () => {
   drawBricks();
 }
 
+//If user have piked all bars
+const lookForWin = () => {
+  if(score == 36){
+    console.log('win');
+    win.classList.add('show');
+    scoreId.innerHTML = "Score: " + score;
+    score = 0;
+    title.classList.add('blur');
+    canvas.classList.add('blur');
+    infoButton.classList.add('blur');
+    btnGrup.classList.add('blur');
+  }
+}
+
 // Update canvas drawing and animation
 const update = () => {
   movePaddle();
@@ -217,6 +232,8 @@ const update = () => {
   //the browser calls a specified function 
   //to update an animation before the next repaint
   requestAnimationFrame(update);
+  lookForWin();
+  
 }
 
 update();
@@ -256,6 +273,8 @@ const btnUp = () => {
   paddle.dx = 0;
 }
 
+
+
 // Keyboard event handlers
 document.addEventListener('keydown', keyDown);
 document.addEventListener('keyup', keyUp);
@@ -271,18 +290,25 @@ rulesBtn.addEventListener('click', () => {
   rules.classList.add('show');
 
 });
-closeBtn.addEventListener('click', () => {
-  title.classList.remove('blur');
-  canvas.classList.remove('blur');
-  infoButton.classList.remove('blur');
-  btnGrup.classList.remove('blur');
-  rules.classList.remove('show');
-});
+for(let i = 0; i < closeBtn.length; i++){
+  closeBtn[i].addEventListener('click', () => {
+    console.log('win');
+    title.classList.remove('blur');
+    canvas.classList.remove('blur');
+    infoButton.classList.remove('blur');
+    btnGrup.classList.remove('blur');
+    rules.classList.remove('show');
+    win.classList.remove('show');
+  });
+}
+
+
 document.addEventListener('touchmove', (e)=>{
   let touch = e.touches[0];
   paddle.x = touch.pageX * 2;
   // console.log("Touch x:" + touch.pageX + ", y:" + touch.pageY);
 });
+
 
 
 // document.addEventListener('touchmove', function(event) {

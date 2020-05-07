@@ -87,6 +87,29 @@ canvas {
   transform: translateX(0);
 }
 
+.win{
+  position: absolute;
+  top: 50%;
+  left: 50%-200px;
+  width: 45%;
+  padding: 20px;
+  line-height: 1.5;
+  transform: translateX(-200%);
+  transition: transform 1s ease-in-out;
+  background: rgba(255, 255, 255, 0.527);
+  text-align: center;
+  color: black;
+  border-radius: 5%;
+}
+.win.show{
+  transform: translateX(0);
+}
+
+.win h2{
+  margin: 0;
+  padding: 0;
+}
+
 .blur {
   filter: blur(10px);
 }
