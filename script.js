@@ -275,6 +275,6 @@ closeBtn.addEventListener('click', () => {
   title.classList.remove('blur');
   canvas.classList.remove('blur');
   infoButton.classList.remove('blur');
-  btnGrup.classList.add('blur');
+  btnGrup.classList.remove('blur');
   rules.classList.remove('show');
 });
