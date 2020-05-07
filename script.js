@@ -279,7 +279,6 @@ closeBtn.addEventListener('click', () => {
   rules.classList.remove('show');
 });
 document.addEventListener('touchmove', (e)=>{
-  e.preventDefault();
   let touch = e.touches[0];
   paddle.x = touch.pageX * 2;
   // console.log("Touch x:" + touch.pageX + ", y:" + touch.pageY);
