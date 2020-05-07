@@ -269,7 +269,7 @@ rulesBtn.addEventListener('click', () => {
   infoButton.classList.add('blur');
   btnGrup.classList.add('blur');
   rules.classList.add('show');
-  
+
 });
 closeBtn.addEventListener('click', () => {
   title.classList.remove('blur');
@@ -278,3 +278,16 @@ closeBtn.addEventListener('click', () => {
   btnGrup.classList.remove('blur');
   rules.classList.remove('show');
 });
+document.addEventListener('touchmove', (e)=>{
+  e.preventDefault();
+  let touch = e.touches[0];
+  paddle.x = touch.pageX * 2;
+  // console.log("Touch x:" + touch.pageX + ", y:" + touch.pageY);
+});
+
+
+// document.addEventListener('touchmove', function(event) {
+//   event.preventDefault();
+//   var touch = event.touches[0];
+//   console.log("Touch x:" + touch.pageX + ", y:" + touch.pageY);
+// }, false);
