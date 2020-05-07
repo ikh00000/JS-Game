@@ -267,11 +267,14 @@ rulesBtn.addEventListener('click', () => {
   title.classList.add('blur');
   canvas.classList.add('blur');
   infoButton.classList.add('blur');
+  btnGrup.classList.add('blur');
   rules.classList.add('show');
+  
 });
 closeBtn.addEventListener('click', () => {
   title.classList.remove('blur');
   canvas.classList.remove('blur');
   infoButton.classList.remove('blur');
+  btnGrup.classList.add('blur');
   rules.classList.remove('show');
 });
