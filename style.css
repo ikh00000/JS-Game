@@ -1,5 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #8ed9ff;
+  background-color: #0095dd;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +24,16 @@ canvas {
   border-radius: 5px;
 }
 
-/* .btn:focus {
+.btn {
+  cursor: pointer;
+  border: 0;
+  padding: 10px 20px;
+  background: #000;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.btn:focus {
   outline: 0;
 }
 
@@ -54,4 +67,4 @@ canvas {
 
 .rules.show {
   transform: translateX(0);
-} */
+}
