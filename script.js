@@ -14,6 +14,7 @@ const win = document.getElementById('win');
 const scoreId = document.getElementById('scoreId');
 const scrnBtnsCheck = document.getElementById('scrnBtnsCheck');
 let score = 0;
+const winScore = 36;
 
 const brickRowCount = 9; //space for bicks in row
 const brickColumnCount = 4; //space for bicks in column
@@ -213,7 +214,7 @@ const draw = () => {
 
 //If user have piked all bars
 const lookForWin = () => {
-  if(score == 5){
+  if(score == winScore){
     console.log('win');
     win.classList.add('show');
     scoreId.innerHTML = "Score: " + score;
