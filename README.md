@@ -8,7 +8,7 @@ If you are plaing from smartphone or tablet - you can use buttons with arrows or
 
 Have a nice game!
 
-Some photos:
+Some photos: </br>
 <img src="screens/1.png" alt="" width="30%" >
 <img src="screens/2.png" alt="" width="30%" >
 <img src="screens/3.png" alt="" width="30%" >
