@@ -1,6 +1,6 @@
 # Breakout game
 
-Site: https://ivanjulian.github.io/JS-Game/
+Site: https://ikh00000.github.io/JS-Game/
 
 This Game was created by pure JS with canvas. </br>
 For controlling the paddle you can use arrows on your keyboard. </br>
